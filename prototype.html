@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Translator</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://kit.fontawesome.com/25f4d0cb94.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <div class="titleHeader">
+                <h1>TRANSLATOR</h1>
+            </div>
+            <div class="buttonContainer">
+                <div>
+                    <select class="languageButton" onchange="selection()" id="langBtn">
+                        <option value="" disabled selected hidden>Japanese</option>
+                        <!-- <option value="English">English</option>
+                        <option value="Japanese">Japanese</option> -->
+                    </select>
+                </div>
+                <div>
+                    <select class="languageButton" onchange="selections()" id="langButn">
+                        <option value="" disabled selected hidden>English</option>
+                        <!-- <option value="English">English</option>
+                        <option value="Japanese">Japanese</option>
+                        <option value="Bisaya">Bisaya</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="inputContainer">
+                <input class="inputLanguage" id="myText" placeholder="Language"></input>
+                <input class="inputLanguage" id="myTexts" placeholder="Language"></input>
+            </div>
+            <div class="speakerContainer">
+                <button class="speakerButton" onclick="startRecording(this)" id="start">
+                    <i class="fa-solid fa-microphone fa-2x"></i>
+                </button>
+                <button class="speakerButton" onclick="stopRecording(this)" id="stops">
+                    <i class="fa-solid fa-stop fa-2x"></i>
+                </button>
+            </div>
+            <ul id="output" class="output"></ul>
+        </div>
+    </body>
+        <script>
+            // let selection = document.querySelector('select');
+            // let result = document.querySelector('input');
+            // selection.addEventListener('change', () => {
+            //     result.innerText = selection.options[selection.selectedIndex].value;
+            //     console.log(selection.selectedIndex);
+            // });
+            
+            function selection() {
+                var select = document.getElementById('langBtn');
+                var value = select.options[select.selectedIndex].value;
+                document.getElementById("myText").placeholder = value;
+                }
+            function selections() {
+                var select = document.getElementById('langButn');
+                var value = select.options[select.selectedIndex].value;
+                document.getElementById("myTexts").placeholder = value;
+                }
+          </script>
+          <script src="./api_key.js"></script>
+          <script src="./main.js"></script> 
+          <script src="./dist/recorder.js"></script>
+</html>
