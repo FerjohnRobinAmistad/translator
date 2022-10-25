@@ -2,6 +2,7 @@ var audioContext
 var recorder
 var start = document.getElementById('start');
 var stops = document.getElementById('stops');
+var trans = document.getElementById('myText');
  
 // 初期化
 window.onload = function init() {
@@ -85,12 +86,33 @@ function audioRecognize() {
         output.innerHTML += "\n" + text
         console.log("result: " + text)
         document.getElementById("myText").placeholder = text
+        translateText(text);
       })
     }
     reader.readAsArrayBuffer(blob)
   })
 }
 
+function translateText (content) {
+  fetch('https://translation.googleapis.com/language/translate/v2?key=' + apiKEYS, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json; charset=utf-8'
+    },
+    body: JSON.stringify({
+      q: content,
+      target: 'en'
+    })
+  }).then(function (response) {
+    return response.text()
+  }).then(function (text) {
+    let result_json = JSON.parse(text)
+    let result = result_json.data.translations[0].translatedText;
+    console.log(result);
+    output.innerHTML = result;
+    document.getElementById("myTexts").placeholder = result
+  })
+}
 // ArrayBuffer → Base64
 function arrayBufferToBase64(buffer) {
   let binary = ''

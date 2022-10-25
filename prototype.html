@@ -15,16 +15,11 @@
                 <div>
                     <select class="languageButton" onchange="selection()" id="langBtn">
                         <option value="" disabled selected hidden>Japanese</option>
-                        <!-- <option value="English">English</option>
-                        <option value="Japanese">Japanese</option> -->
                     </select>
                 </div>
                 <div>
-                    <select class="languageButton" onchange="selections()" id="langButn">
+                    <select class="languageButton" onchange="googleTranslateElementInit()" id="langButn">
                         <option value="" disabled selected hidden>English</option>
-                        <!-- <option value="English">English</option>
-                        <option value="Japanese">Japanese</option>
-                        <option value="Bisaya">Bisaya</option> -->
                     </select>
                 </div>
             </div>
@@ -44,23 +39,12 @@
         </div>
     </body>
         <script>
-            // let selection = document.querySelector('select');
-            // let result = document.querySelector('input');
-            // selection.addEventListener('change', () => {
-            //     result.innerText = selection.options[selection.selectedIndex].value;
-            //     console.log(selection.selectedIndex);
-            // });
-            
             function selection() {
                 var select = document.getElementById('langBtn');
                 var value = select.options[select.selectedIndex].value;
                 document.getElementById("myText").placeholder = value;
                 }
-            function selections() {
-                var select = document.getElementById('langButn');
-                var value = select.options[select.selectedIndex].value;
-                document.getElementById("myTexts").placeholder = value;
-                }
+           
           </script>
           <script src="./api_key.js"></script>
           <script src="./main.js"></script> 
